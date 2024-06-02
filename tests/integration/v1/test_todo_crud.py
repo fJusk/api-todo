@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.core.repo import Repository
 from src.database.models import TodoTask
 from src.enums import TodoStatus
+from tests.fixtures import sqlite_session, test_client  # noqa: F401
 
 
 @pytest.mark.asyncio
