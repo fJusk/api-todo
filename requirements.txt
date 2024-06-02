@@ -1,3 +1,12 @@
 fastapi
-sqlalchemy
 alembic
+SQLAlchemy
+ruff
+pre-commit
+uvicorn
+psycopg2-binary
+asyncpg
+pydantic_settings
+pytest
+pytest-asyncio
+aiosqlite

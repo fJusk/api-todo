@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    networks:
+      - my_network
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+networks:
+  my_network:
+    driver: bridge
