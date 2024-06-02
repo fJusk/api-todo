@@ -69,6 +69,7 @@ class CRUDService(BaseSessionService, Generic[M, C, U]):
 
         log.debug(f"Updating {self.DB_MODEL.__name__} with data: {data}")
 
+        # FIXME: mypy doesn't understand that result is not None
         return await self._repo.update(record)  # type: ignore
 
     async def _delete(self, _id: int) -> bool:
@@ -85,6 +86,7 @@ class CRUDService(BaseSessionService, Generic[M, C, U]):
             self._raise_not_found(_id)
 
         try:
+            # FIXME: mypy doesn't understand
             await self._repo.delete(record)  # type: ignore
 
         except IntegrityError as e:
@@ -113,6 +115,7 @@ class CRUDService(BaseSessionService, Generic[M, C, U]):
         if res is None:
             self._raise_not_found(_id)
 
+        # FIXME: mypy doesn't understand that res is not None
         return res  # type: ignore
 
     async def create(self, data: C) -> M:
