@@ -13,6 +13,7 @@ api-todo - простой набор CRUD операций для управле
 - sqlite (for tests)
 - pre-commit (hooks, mypy, ruff)
 - docker
+- GitHub actions (CI)
 
 ### Решения
 - дженерик репо на CRUD операции
